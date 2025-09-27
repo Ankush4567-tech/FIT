@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web App</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <div id="root">
+        <div class="loading">Loading React app...</div>
+    </div>
+    
+    <div style="padding: 20px; margin-top: 100px;">
+        <input type="text" id="search" placeholder="Search...">
+        <button class="btn">Click Me</button>
+    </div>
+    
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/main.js"></script>
+    
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <script type="text/babel" src="components/Header.jsx"></script>
+    <script type="text/babel" src="components/Card.jsx"></script>
+    <script type="text/babel" src="pages/Home.jsx"></script>
+    <script type="text/babel">
+        
+        function App() {
+            return React.createElement('div', null,
+                React.createElement(Header, { title: "My React App" }),
+                React.createElement(Home)
+            );
+        }
+        
+       
+        ReactDOM.render(React.createElement(App), document.getElementById('root'));
+    </script>
+</body>
+</html>
