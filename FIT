@@ -1,0 +1,975 @@
+  <html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife Tracker | Affordable Fitness Tracking Solutions in India</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2a9d8f;
+            --secondary: #264653;
+            --accent: #e9c46a;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #212529;
+            --indigo: #4b0082;
+            --saffron: #FF9933;
+            --green: #138808;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .logo-flag {
+            display: inline-flex;
+            height: 20px;
+            width: 30px;
+            margin-left: 10px;
+            position: relative;
+        }
+        
+        .logo-flag::before {
+            content: '';
+            position: absolute;
+            height: 7px;
+            width: 100%;
+            background-color: var(--saffron);
+            top: 0;
+            left: 0;
+        }
+        
+        .logo-flag::after {
+            content: '';
+            position: absolute;
+            height: 7px;
+            width: 100%;
+            background-color: var(--green);
+            bottom: 0;
+            left: 0;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border-color: white;
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Features Section */
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .pricing .section-title h2 {
+            color: white;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+            color: white;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--light);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-details {
+            margin-top: 1.5rem;
+        }
+        
+        .contact-details p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Fitness Tracker Component */
+        .tracker-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        .tracker-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tracker-form input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            min-width: 200px;
+        }
+        
+        .tracker-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .chart-container {
+            height: 300px;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--secondary);
+                transition: 0.5s;
+                box-shadow: var(--shadow);
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn {
+                display: block;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .tracker-form {
+                flex-direction: column;
+            }
+            
+            .tracker-form input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>FitLife Tracker</span>
+                <div class="logo-flag"></div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#tracker">Fitness Tracker</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Affordable Fitness Tracking Solutions for India</h1>
+            <p>Track your workouts, monitor your progress, and achieve your fitness goals with our affordable solutions</p>
+            <div>
+                <a href="#pricing" class="btn">View Pricing</a>
+                <a href="#tracker" class="btn btn-secondary">Try Tracker</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Features</h2>
+                <p>Discover what makes our fitness tracker perfect for Indian users</p>
+            </div>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <h3>Activity Tracking</h3>
+                    <p>Track steps, distance, calories burned, and active minutes with our advanced sensors and algorithms.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Heart Rate Monitoring</h3>
+                    <p>24/7 heart rate monitoring with alerts for abnormal readings to keep your health in check.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Sleep Analysis</h3>
+                    <p>Track your sleep patterns and get insights to improve your sleep quality and overall health.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>GPS Tracking</h3>
+                    <p>Map your runs, walks, and cycles with built-in GPS to track your routes and performance.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Long Battery Life</h3>
+                    <p>Enjoy up to 7 days of battery life on a single charge, perfect for extended use.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Affordable Pricing</h3>
+                    <p>Specially designed for the Indian market with pricing that makes fitness tracking accessible to all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Affordable Pricing</h2>
+                <p>Choose the plan that works best for your fitness journey</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">₹1,499 <span>/one-time</span></div>
+                    <ul class="pricing-features">
+                        <li>Step Counting</li>
+                        <li>Distance Tracking</li>
+                        <li>Calorie Tracking</li>
+                        <li>Basic Sleep Tracking</li>
+                        <li>3 Months Warranty</li>
+                    </ul>
+                    <a href="#contact" class="btn">Buy Now</a>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="pricing-card">
+                    <h3>Pro</h3>
+                    <div class="price">₹2,999 <span>/one-time</span></div>
+                    <ul class="pricing-features">
+                        <li>All Basic Features</li>
+                        <li>Heart Rate Monitoring</li>
+                        <li>Advanced Sleep Analysis</li>
+                        <li>GPS Tracking</li>
+                        <li>6 Months Warranty</li>
+                    </ul>
+                    <a href="#contact" class="btn">Buy Now</a>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price">₹4,499 <span>/one-time</span></div>
+                    <ul class="pricing-features">
+                        <li>All Pro Features</li>
+                        <li>Blood Oxygen Monitoring</li>
+                        <li>Stress Tracking</li>
+                        <li>Water Resistance (50m)</li>
+                        <li>1 Year Warranty</li>
+                    </ul>
+                    <a href="#contact" class="btn">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tracker" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fitness Tracker</h2>
+                <p>Try our interactive fitness tracker to monitor your daily activity</p>
+            </div>
+            <div class="tracker-container">
+                <h3>Track Your Activity</h3>
+                <div class="tracker-form">
+                    <input type="number" id="steps" placeholder="Steps taken today">
+                    <input type="number" id="calories" placeholder="Calories burned">
+                    <input type="number" id="distance" placeholder="Distance (km)">
+                    <button class="btn" id="add-activity">Add Activity</button>
+                </div>
+                
+                <div class="tracker-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-steps">0</div>
+                        <div class="stat-label">Total Steps</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-calories">0</div>
+                        <div class="stat-label">Calories Burned</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="total-distance">0</div>
+                        <div class="stat-label">Distance (km)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="active-days">0</div>
+                        <div class="stat-label">Active Days</div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="activityChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Reach out to us for inquiries, support, or to place an order</p>
+            </div>
+            <div class="contact-grid">
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Our Address</h3>
+                    <div class="contact-details">
+                        <p>FitLife Tracker India</p>
+                        <p>Sector 63, Noida</p>
+                        <p>Uttar Pradesh 201301</p>
+                    </div>
+                </div>
+                
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <div class="contact-details">
+                        <p>Sales: +91 7379337932</p>
+                        <p>Support: +91 818889789</p>
+                        <p>Mon-Sat: 9AM to 6PM</p>
+                    </div>
+                </div>
+                
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <div class="contact-details">
+                        <p>Sales: sales@fitlifeindia.com</p>
+                        <p>Support: support@fitlifeindia.com</p>
+                        <p>Website: www.fitlifeindia.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                
+                <div class="footer-column">
+                    <h3>FitLife Tracker</h3>
+                    <p>Affordable fitness tracking solutions designed specifically for the Indian market. Our products help you stay healthy and active.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#tracker">Fitness Tracker</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                
+                <div class="footer-column">
+                    <h3>Our Products</h3>
+                    <ul>
+                        <li><a href="#">FitLife Basic</a></li>
+                        <li><a href="#">FitLife Pro</a></li>
+                        <li><a href="#">FitLife Premium</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Mobile App</a></li>
+                    </ul>
+                </div>
+                
+              
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 FitLife Tracker India. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+      
+        const addActivityBtn = document.getElementById('add-activity');
+        let activities = JSON.parse(localStorage.getItem('activities')) || [];
+        
+        
+        function updateStats() {
+            const totalSteps = activities.reduce((sum, activity) => sum + (parseInt(activity.steps) || 0), 0);
+            const totalCalories = activities.reduce((sum, activity) => sum + (parseInt(activity.calories) || 0), 0);
+            const totalDistance = activities.reduce((sum, activity) => sum + (parseFloat(activity.distance) || 0), 0);
+            const activeDays = new Set(activities.map(activity => activity.date)).size;
+            
+            document.getElementById('total-steps').textContent = totalSteps.toLocaleString();
+            document.getElementById('total-calories').textContent = totalCalories.toLocaleString();
+            document.getElementById('total-distance').textContent = totalDistance.toFixed(2);
+            document.getElementById('active-days').textContent = activeDays;
+            
+            updateChart();
+        }
+        
+       
+        addActivityBtn.addEventListener('click', () => {
+            const steps = document.getElementById('steps').value;
+            const calories = document.getElementById('calories').value;
+            const distance = document.getElementById('distance').value;
+            
+            if (steps || calories || distance) {
+                activities.push({
+                    steps: steps || 0,
+                    calories: calories || 0,
+                    distance: distance || 0,
+                    date: new Date().toLocaleDateString()
+                });
+                
+                localStorage.setItem('activities', JSON.stringify(activities));
+                
+                document.getElementById('steps').value = '';
+                document.getElementById('calories').value = '';
+                document.getElementById('distance').value = '';
+                
+                updateStats();
+            } else {
+                alert('Please enter at least one activity value.');
+            }
+        });
+        
+        
+        let activityChart = null;
+        
+        function updateChart() {
+            const ctx = document.getElementById('activityChart').getContext('2d');
+            
+            
+            if (activityChart) {
+                activityChart.destroy();
+            }
+            
+            
+            const activitiesByDate = {};
+            activities.forEach(activity => {
+                if (!activitiesByDate[activity.date]) {
+                    activitiesByDate[activity.date] = {
+                        steps: 0,
+                        calories: 0,
+                        distance: 0
+                    };
+                }
+                
+                activitiesByDate[activity.date].steps += parseInt(activity.steps) || 0;
+                activitiesByDate[activity.date].calories += parseInt(activity.calories) || 0;
+                activitiesByDate[activity.date].distance += parseFloat(activity.distance) || 0;
+            });
+            
+            const dates = Object.keys(activitiesByDate).slice(-7); // Last 7 days
+            const stepsData = dates.map(date => activitiesByDate[date].steps);
+            const caloriesData = dates.map(date => activitiesByDate[date].calories);
+            
+            activityChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [
+                        {
+                            label: 'Steps',
+                            data: stepsData,
+                            backgroundColor: 'rgba(42, 157, 143, 0.2)',
+                            borderColor: 'rgba(42, 157, 143, 1)',
+                            borderWidth: 2,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Calories',
+                            data: caloriesData,
+                            backgroundColor: 'rgba(233, 196, 106, 0.2)',
+                            borderColor: 'rgba(233, 196, 106, 1)',
+                            borderWidth: 2,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStats();
+        });
+    </script>
+</body>
+</html>
