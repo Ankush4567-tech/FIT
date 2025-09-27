@@ -1,0 +1,43 @@
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        gap: 1rem;
+        display: none;
+    }
+    
+    .nav-menu-open {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .card {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+    
+    .home-page {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0.5rem 0;
+    }
+    
+    .nav {
+        padding: 0 0.5rem;
+    }
+    
+    body {
+        padding-top: 60px;
+    }
+}
